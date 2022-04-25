@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { movies } from 'src/assets/movies';
+
 
 @Component({
   selector: 'app-home',
@@ -8,5 +10,7 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   constructor() {}
+
+  public movie = movies;
 
 }

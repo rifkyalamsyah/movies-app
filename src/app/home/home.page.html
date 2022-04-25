@@ -1,11 +1,44 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-button slot="start" color="white">
+      <ion-icon slot="icon-only" name="film" size="large"></ion-icon>
+    </ion-button>
     <ion-title>
-      Movies
+      Movies Apps
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <ion-item *ngFor="let m of movie.results">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <img src="https://image.tmdb.org/t/p/w500/{{m.poster_path}}" width="100%" alt="poster">
+        </ion-col>
+        <ion-col class="ion-text-start ion-30p">
+          <b>{{m.title}}</b> <br/>
+          <small>
+            <div *ngIf="m.vote_average > '7'">
+              <ion-text color="primary">Rating: {{m.vote_average}}</ion-text>
+            </div>
+            <div *ngIf="m.vote_average > '6' && '7' >= m.vote_average">
+              <ion-text color="success">Rating: {{m.vote_average}}</ion-text>
+            </div>
+            <div *ngIf="'6' >= m.vote_average ">
+              <ion-text color="danger">Rating: {{m.vote_average}}</ion-text>
+            </div>
+              <i>Release: {{m.release_date | date: 'dd LL yyyy'}}</i>
+          </small>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
 </ion-content>
+
+
+<ion-footer class="ion-text-center">
+  <ion-toolbar>
+    <h5>Rifky Alamsayh - 19.01.4351</h5>
+  </ion-toolbar>
+</ion-footer>
